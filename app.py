@@ -14,12 +14,18 @@ from function import (
 import traceback
 
 app = Flask(__name__)
+app.config["MAX_CONTENT_LENGTH"] = 100 * 1024 * 1024  # Set limit to 100MB
 
 # Load model
 with open("model.json", "r") as json_file:
     model_json = json_file.read()
 model = model_from_json(model_json)
 model.load_weights("prototype.h5")
+
+
+@app.route("/")
+def home():
+    return "Welcome to ASL-Model"
 
 
 @app.route("/predict", methods=["POST"])
