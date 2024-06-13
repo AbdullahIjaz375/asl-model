@@ -45,8 +45,7 @@ def extract_keypoints(results):
 # Path for exported data, numpy arrays
 DATA_PATH = os.path.join("MP_Data")
 
-
-actions = np.array(
+asl_actions = np.array(
     [
         "a",
         "b",
@@ -77,7 +76,46 @@ actions = np.array(
     ]
 )
 
+psl_actions = np.array(
+    [
+        "ع",
+        "ا",
+        "اے",
+        "بڑی ے",
+        "ب",
+        "چ",
+        "چھوٹی ے",
+        "د",
+        "ذ",
+        "ڈ",
+        "ج",
+        "ف",
+        "گ",
+        "غ",
+        "ء",
+        "ہ",
+        "ح",
+        "ج",
+        "ک",
+        "خ",
+        "ل",
+        "م",
+        "ن",
+        "پ",
+        "ق",
+        "ر",
+        "س",
+        "ش",
+        "ص",
+        "ت",
+        "ٹ",
+        "ث",
+        "ط",
+        "و",
+        "ز",
+        "ظ",
+    ]
+)
 
 no_sequences = 30
-
 sequence_length = 30
