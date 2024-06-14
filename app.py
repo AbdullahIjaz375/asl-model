@@ -109,11 +109,6 @@ def predict_action(model, video, actions):
                             res = model.predict(np.expand_dims(sequence, axis=0))[0]
                             interval_predictions.append(np.argmax(res))
 
-                    # Display the frame with the bounding box and landmarks
-                    cv2.imshow("Processed Frame", frame)
-                    if cv2.waitKey(1) & 0xFF == ord("q"):
-                        break
-
                 if interval_predictions:
                     most_frequent_prediction = max(
                         set(interval_predictions), key=interval_predictions.count
@@ -131,8 +126,6 @@ def predict_action(model, video, actions):
         return {"actions": predictions}
 
     except Exception as e:
-        print("Error occurred: ", str(e))
-        print(traceback.format_exc())
         return {"error": str(e)}, 500
 
     finally:
@@ -140,7 +133,7 @@ def predict_action(model, video, actions):
             try:
                 os.remove(temp_video.name)
             except Exception as e:
-                print("Error removing temp file: ", str(e))
+                pass
 
 
 @app.route("/predict_asl", methods=["POST"])
